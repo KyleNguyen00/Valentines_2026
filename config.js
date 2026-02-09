@@ -7,8 +7,8 @@ const CONFIG = {
     pageTitle: "Our Love Story 📖✨",
 
     floatingEmojis: {
-        hearts: ['❤️', '💖', '💝', '💗', '💓'],
-        stars: ['⭐', '✨', '🌟']
+        hearts: ['images/kiki.png', 'images/totoro.png', 'images/haku.png', 'images/kiki.png', 'images/totoro.png'],
+        stars: ['images/kiki.png', 'images/totoro.png', 'images/haku.png']
     },
 
     storyTitle: "Once upon a time...",

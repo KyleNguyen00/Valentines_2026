@@ -60,19 +60,34 @@ function createFloatingElements() {
     const container = document.querySelector('.floating-elements');
     if (!container) return;
     
-    config.floatingEmojis.hearts.forEach(heart => {
+    // Create floating image elements when config provides PNG paths
+    config.floatingEmojis.hearts.forEach(item => {
         const div = document.createElement('div');
         div.className = 'heart';
-        div.innerHTML = heart;
+        if (typeof item === 'string' && item.endsWith('.png')) {
+            const img = document.createElement('img');
+            img.src = item;
+            img.alt = '';
+            div.appendChild(img);
+        } else {
+            div.innerHTML = item;
+        }
         setRandomPosition(div);
         container.appendChild(div);
     });
     
     if (config.floatingEmojis.stars) {
-        config.floatingEmojis.stars.forEach(star => {
+        config.floatingEmojis.stars.forEach(item => {
             const div = document.createElement('div');
             div.className = 'star';
-            div.innerHTML = star;
+            if (typeof item === 'string' && item.endsWith('.png')) {
+                const img = document.createElement('img');
+                img.src = item;
+                img.alt = '';
+                div.appendChild(img);
+            } else {
+                div.innerHTML = item;
+            }
             setRandomPosition(div);
             container.appendChild(div);
         });
@@ -84,9 +99,17 @@ function createHeartExplosion() {
     if (!container) return;
     
     for (let i = 0; i < 50; i++) {
+        const heartData = config.floatingEmojis.hearts[Math.floor(Math.random() * config.floatingEmojis.hearts.length)];
         const heart = document.createElement('div');
-        heart.innerHTML = config.floatingEmojis.hearts[Math.floor(Math.random() * config.floatingEmojis.hearts.length)];
         heart.className = 'heart';
+        if (typeof heartData === 'string' && heartData.endsWith('.png')) {
+            const img = document.createElement('img');
+            img.src = heartData;
+            img.alt = '';
+            heart.appendChild(img);
+        } else {
+            heart.innerHTML = heartData;
+        }
         container.appendChild(heart);
         setRandomPosition(heart);
     }
